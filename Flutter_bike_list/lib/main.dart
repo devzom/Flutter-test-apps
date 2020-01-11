@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futter_test/bikes_list_page.dart';
+import 'package:lists_JSON_test/bikes_list_page.dart';
 
 void main() => runApp(MyApp());
 

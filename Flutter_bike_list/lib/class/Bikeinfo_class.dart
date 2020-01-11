@@ -4,7 +4,7 @@ class Bikeinfo {
 
   Bikeinfo(this.name, this.rider);
 
-  Bikeinfo.fromJson(Map<dynamic, String> json)
+  Bikeinfo.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         rider = json['rider'];
 }
