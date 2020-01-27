@@ -50,7 +50,7 @@ class _BikesListState extends State<BikesList> {
             backgroundColor: Colors.amber,
           ),
           title: Text(bike.name),
-          subtitle: Text(bike.rider),
+          subtitle: Text(bike.rider),57 6 6  6
           trailing: FlatButton(
             child: Icon(
               Icons.arrow_forward_ios,
