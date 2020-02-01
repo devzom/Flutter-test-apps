@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -57,24 +58,31 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     return new Scaffold(
       appBar: AppBar(
         title: Text('SymChat'),
+        // leading: Icon(Icons.person),
         centerTitle: true,
         elevation: Theme.of(context).platform == TargetPlatform.iOS ? 1.0 : 6.0,
       ),
-      body: Column(
-        children: <Widget>[
-          new Flexible(
-            child: ListView.builder(
-              padding: EdgeInsets.all(8.0),
-              reverse: true,
-              itemBuilder: (_, int index) => _message[index],
-              itemCount: _message.length,
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            new Flexible(
+              child: ListView.builder(
+                padding: EdgeInsets.all(8.0),
+                reverse: true,
+                itemBuilder: (_, int index) => _message[index],
+                itemCount: _message.length,
+              ),
             ),
-          ),
-          Divider(height: 1),
-          Container(
-              decoration: BoxDecoration(color: Theme.of(context).cardColor),
-              child: _buildTextComposer()),
-        ],
+            Divider(height: 1),
+            Container(
+                decoration: Theme.of(context).platform == TargetPlatform.iOS
+                    ? BoxDecoration(
+                        border:
+                            Border(top: BorderSide(color: Colors.grey[200])))
+                    : null,
+                child: _buildTextComposer()),
+          ],
+        ),
       ),
     );
   }
@@ -100,13 +108,18 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 6.0),
-              child: IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
-                  onPressed: _isComposing
-                      ? () => _handleSubmitted(_textController.text)
-                      : null),
-            )
+                margin: EdgeInsets.symmetric(horizontal: 6.0),
+                child: Theme.of(context).platform == TargetPlatform.iOS
+                    ? CupertinoButton(
+                        child: Text("Send"),
+                        onPressed: _isComposing
+                            ? () => _handleSubmitted(_textController.text)
+                            : null)
+                    : IconButton(
+                        icon: Icon(Icons.send),
+                        onPressed: _isComposing
+                            ? () => _handleSubmitted(_textController.text)
+                            : null))
           ],
         ),
       ),
