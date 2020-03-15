@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../class/User_class.dart';
 
 class UserProfile extends StatelessWidget {
   final String user;
@@ -29,7 +28,6 @@ class UserProfile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  decoration: DecoratedBox(decoration: ,),
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                   margin: EdgeInsets.symmetric(vertical: 25),
                   child: Text(
@@ -38,13 +36,6 @@ class UserProfile extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: <Widget>[
-                CheckboxListTile(
-                  value: false,
-                )
-              ],
-            )
           ],
         ),
       ),

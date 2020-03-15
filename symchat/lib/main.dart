@@ -61,6 +61,12 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         // leading: Icon(Icons.person),
         centerTitle: true,
         elevation: Theme.of(context).platform == TargetPlatform.iOS ? 1.0 : 6.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {},
+          )
+        ],
       ),
       body: Container(
         child: Column(
@@ -115,8 +121,8 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                         onPressed: _isComposing
                             ? () => _handleSubmitted(_textController.text)
                             : null)
-                    : IconButton(
-                        icon: Icon(Icons.send),
+                    : FlatButton(
+                        child: Icon(Icons.send),
                         onPressed: _isComposing
                             ? () => _handleSubmitted(_textController.text)
                             : null))
@@ -183,7 +189,7 @@ class ChatMessage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(_name,
-                            style: Theme.of(context).textTheme.subtitle),
+                            style: Theme.of(context).textTheme.headline3),
                         Text(DateFormat('kk:mm').format(dateTime),
                             style: TextStyle(fontSize: 8)),
                       ],
